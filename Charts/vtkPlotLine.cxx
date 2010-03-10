@@ -225,7 +225,10 @@ bool vtkPlotLine::PaintLegend(vtkContext2D *painter, float rect[4])
 //-----------------------------------------------------------------------------
 void vtkPlotLine::GetBounds(double bounds[4])
 {
-  this->Points->GetBounds(bounds);
+  if (this->Points)
+    {
+    this->Points->GetBounds(bounds);
+    }
   vtkDebugMacro(<< "Bounds: " << bounds[0] << "\t" << bounds[1] << "\t"
                 << bounds[2] << "\t" << bounds[3]);
 }
