@@ -228,7 +228,7 @@ bool vtkPlotBar::GetNearestPoint(const vtkVector2f& point,
   // Sort if necessary - in the case of bar plots render order does not matter
   if (!this->Sorted)
     {
-    sort(v.begin(), v.end(), compVector2fX);
+    vtkstd::sort(v.begin(), v.end(), compVector2fX);
     this->Sorted = true;
     }
 
