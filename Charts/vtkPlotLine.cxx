@@ -296,7 +296,7 @@ bool vtkPlotLine::GetNearestPoint(const vtkVector2f& point,
     vtkVector2f* data =
         static_cast<vtkVector2f*>(this->Sorted->GetVoidPointer(0));
     vtkstd::vector<vtkVector2f> v(data, data+n);
-    sort(v.begin(), v.end(), compVector2fX);
+    vtkstd::sort(v.begin(), v.end(), compVector2fX);
     }
 
   // Set up our search array, use the STL lower_bound algorithm
