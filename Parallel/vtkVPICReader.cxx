@@ -86,6 +86,10 @@ vtkVPICReader::~vtkVPICReader()
       this->data[var]->Delete();
     }
   this->SelectionObserver->Delete();
+  if(this->MPIController)
+    {
+    this->MPIController->Delete();
+    }
 }
 
 //----------------------------------------------------------------------------
