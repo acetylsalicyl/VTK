@@ -47,7 +47,7 @@ vtkContextView::vtkContextView()
   this->Scene = actor->GetScene(); // We keep a pointer to this for convenience
   this->Scene->Register(this);
   // Should not need to do this...
-  this->Scene->SetWindow(this->RenderWindow);
+  this->Scene->SetRenderer(this->Renderer);
 
   // Set up our view to render on move, 2D interaction style
   this->SetDisplayHoverText(false);

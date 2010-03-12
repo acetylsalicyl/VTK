@@ -17,6 +17,7 @@
 #include "vtkContextDevice2D.h"
 
 #include "vtkObjectFactory.h"
+#include <assert.h>
 
 vtkCxxRevisionMacro(vtkContextDevice2D, "$Revision$");
 //-----------------------------------------------------------------------------
@@ -26,11 +27,39 @@ vtkContextDevice2D::vtkContextDevice2D()
 {
   this->Geometry[0] = 0;
   this->Geometry[1] = 0;
+  this->BufferId=0;
 }
 
 //-----------------------------------------------------------------------------
 vtkContextDevice2D::~vtkContextDevice2D()
 {
+}
+
+// ----------------------------------------------------------------------------
+bool vtkContextDevice2D::GetBufferIdMode() const
+{
+  return this->BufferId!=0;
+}
+  
+// ----------------------------------------------------------------------------
+void vtkContextDevice2D::BufferIdModeBegin(vtkContextBufferId *bufferId)
+{
+  assert("pre: not_yet" && !this->GetBufferIdMode());
+  assert("pre: bufferId_exists" && bufferId!=0);
+  
+  this->BufferId=bufferId;
+  
+  assert("post: started" && this->GetBufferIdMode());
+}
+  
+// ----------------------------------------------------------------------------
+void vtkContextDevice2D::BufferIdModeEnd()
+{
+  assert("pre: started" && this->GetBufferIdMode());
+  
+  this->BufferId=0;
+  
+  assert("post: done" && !this->GetBufferIdMode());
 }
 
 //-----------------------------------------------------------------------------
