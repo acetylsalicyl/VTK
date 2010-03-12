@@ -66,6 +66,11 @@ vtkPlotLine::~vtkPlotLine()
     this->Sorted->Delete();
     this->Sorted = NULL;
     }
+  if (this->BadPoints)
+    {
+    this->BadPoints->Delete();
+    this->BadPoints = NULL;
+    }
 }
 
 //-----------------------------------------------------------------------------
