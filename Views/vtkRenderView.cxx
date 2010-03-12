@@ -366,7 +366,6 @@ void vtkRenderView::ProcessEvents(
     // vtkExecutionScheduler. We want to automatically render the view
     // when one of our representations is updated.
     vtkDebugMacro("push pipeline causing a render event");
-    this->ResetCamera();
     this->Render();
     }
   else if (caller == this->GetInteractorStyle() &&
