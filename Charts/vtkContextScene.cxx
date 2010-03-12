@@ -357,8 +357,6 @@ void vtkContextScene::UpdateBufferId()
     this->BufferId->SetHeight(height);
     this->BufferId->Allocate();
     
-    vtkIdType size=width*height;
-    
     this->LastPainter->BufferIdModeBegin(this->BufferId);
     this->PaintIds();
     this->LastPainter->BufferIdModeEnd();
