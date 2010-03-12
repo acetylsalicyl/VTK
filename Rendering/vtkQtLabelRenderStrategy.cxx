@@ -434,6 +434,12 @@ void vtkQtLabelRenderStrategy::RenderLabel(
     return;
     }
 
+  if (!this->Renderer)
+    {
+    vtkErrorMacro("Renderer must be set.");
+    return;
+    }
+
   //vtkTimerLog* timer = vtkTimerLog::New();
   //timer->StartTimer();
 
