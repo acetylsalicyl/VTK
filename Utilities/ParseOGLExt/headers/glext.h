@@ -31,7 +31,7 @@ extern "C" {
 /* Header file version number, required by OpenGL ABI for Linux */
 /* glext.h last updated $Date$ */
 /* Current version at http://www.opengl.org/registry/ */
-#define GL_GLEXT_VERSION 59
+#define GL_GLEXT_VERSION 60
 /* Function declaration macros - to move into glplatform.h */
 
 #if defined(_WIN32) && !defined(APIENTRY) && !defined(__CYGWIN__) && !defined(__SCITECH_SNAP__)
@@ -1785,7 +1785,6 @@ extern "C" {
 #endif
 
 #ifndef GL_ARB_draw_buffers_blend
-#define GL_@@@                            0x9110
 #endif
 
 #ifndef GL_ARB_sample_shading
