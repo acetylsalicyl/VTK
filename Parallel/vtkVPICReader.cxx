@@ -29,11 +29,9 @@
 #include "vtkTableExtentTranslator.h"
 #include "vtkToolkits.h"
 
-#include "VPICDataSet.h"
+#include "vtkMultiProcessController.h"
 
-#ifdef VTK_USE_MPI
-#include <mpi.h>
-#endif
+#include "VPICDataSet.h"
 
 vtkCxxRevisionMacro(vtkVPICReader, "$Revision$");
 vtkStandardNewMacro(vtkVPICReader);
@@ -59,15 +57,19 @@ vtkVPICReader::vtkVPICReader()
                                              this->SelectionObserver);
   // External VPICDataSet for actually reading files
   this->vpicData = 0;
-
-  // Set rank and total number of processors
-#ifdef VTK_USE_MPI
-  MPI_Comm_rank(MPI_COMM_WORLD, &this->Rank);
-  MPI_Comm_size(MPI_COMM_WORLD, &this->TotalRank);
-#else
-  this->Rank = 0;
-  this->TotalRank = 1;
-#endif
+  
+  this->MPIController = vtkMultiProcessController::GetGlobalController();
+  
+  if(this->MPIController)
+    {
+    this->Rank = this->MPIController->GetLocalProcessId();
+    this->TotalRank = this->MPIController->GetNumberOfProcesses();
+    }
+  else
+    {
+    this->Rank = 0;
+    this->TotalRank = 1;
+    }
 }  
 
 //----------------------------------------------------------------------------
@@ -219,11 +221,12 @@ int vtkVPICReader::RequestInformation(
     // Some processors might not get a piece of data to render
     vtkTableExtentTranslator *extentTable = vtkTableExtentTranslator::New();
     int processorUsed = this->vpicData->getProcessorUsed();
-#ifdef VTK_USE_MPI
-    MPI_Allreduce((void*) &processorUsed,
-                  (void*) &this->UsedRank,
-                  1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
-#endif
+    
+    if(this->MPIController)
+      {
+      this->MPIController->AllReduce(&processorUsed, &this->UsedRank, 1, vtkCommunicator::SUM_OP);
+      }
+
     extentTable->SetNumberOfPieces(this->UsedRank);
 
     for (int piece = 0; piece < this->UsedRank; piece++) {
