@@ -80,6 +80,10 @@ vtkVPICReader::~vtkVPICReader()
     delete [] this->FileName;
     }
   this->PointDataArraySelection->Delete();
+  for (int var = 0; var < this->NumberOfVariables; var++) {
+      this->data[var]->Delete();
+    }
+  this->SelectionObserver->Delete();
 }
 
 //----------------------------------------------------------------------------
