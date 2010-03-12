@@ -518,5 +518,14 @@ void vtkVPICReader::SetPointArrayStatus(const char* name, int status)
 
 void vtkVPICReader::PrintSelf(ostream& os, vtkIndent indent)
 {
-  os << "VPIC Reader PrintSelf" << endl;
+  os << indent << "Stride: " << this->Stride;
+  os << indent << "FileName: " << this->FileName;
+  os << indent << "XLayout: " << this->XLayout;
+  os << indent << "YLayout: " << this->YLayout;
+  os << indent << "ZLayout: " << this->ZLayout;
+  os << indent << "XExtent: " << this->XExtent;
+  os << indent << "YExtent: " << this->YExtent;
+  os << indent << "ZExtent: " << this->ZExtent;
+
+  this->Superclass::PrintSelf(os, indent);
 }
