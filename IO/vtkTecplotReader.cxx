@@ -1608,12 +1608,14 @@ void vtkTecplotReader::ReadFile( vtkMultiBlockDataSet * multZone )
           {                    
           vtkErrorMacro( << this->FileName << "; Tecplot zone record parameter "
                          << "'STRANDID' is currently unsupported." );
+          this->Internal->GetNextToken();
           }
         else 
         if ( tok == "SOLUTIONTIME" )
           {                    
           vtkErrorMacro( << this->FileName << "; Tecplot zone record parameter "
                          << "'SOLUTIONTIME' is currently unsupported." );
+          this->Internal->GetNextToken();
           }
         tok = this->Internal->GetNextToken();
         }
