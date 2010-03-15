@@ -180,7 +180,7 @@ int vtkTemporalInterpolator::RequestInformation (
         }
       }
     outInfo->Set(vtkStreamingDemandDrivenPipeline::TIME_STEPS(), 
-      &OutputTimeValues[0], OutputTimeValues.size());
+      &OutputTimeValues[0], static_cast<int>(OutputTimeValues.size()));
     }
   else 
     {
