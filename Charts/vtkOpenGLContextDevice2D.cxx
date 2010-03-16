@@ -144,7 +144,7 @@ public:
   GLfloat SavedClearColor[4];
 
   int TextCounter;
-  vtkVector2f Dim;
+  vtkVector2i Dim;
 };
 
 //-----------------------------------------------------------------------------
