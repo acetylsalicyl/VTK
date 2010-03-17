@@ -652,7 +652,11 @@ void vtkOpenGLContextDevice2D::DrawImage(float *p, int, vtkImageData *image)
 //-----------------------------------------------------------------------------
 unsigned int vtkOpenGLContextDevice2D::AddPointSprite(vtkImageData *image)
 {
-  this->Storage->Texture = vtkTexture::New();
+  if (!this->Storage->Texture)
+    {
+    this->Storage->Texture = vtkTexture::New();
+    this->Storage->Texture->SetRepeat(false);
+    }
   this->Storage->Texture->SetInput(image);
   return 0;
 }
