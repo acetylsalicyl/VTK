@@ -32,6 +32,7 @@
 #include "vtkMultiProcessController.h"
 
 #include "VPICDataSet.h"
+#include "VPICView.h"
 
 vtkCxxRevisionMacro(vtkVPICReader, "$Revision$");
 vtkStandardNewMacro(vtkVPICReader);

@@ -125,7 +125,7 @@ void vtkPCosmoHaloFinder::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "Controller: (null)\n";
     }
-
+  os << indent << "NP: " << this->NP << endl;
   os << indent << "rL: " << this->RL << endl;
   os << indent << "Overlap: " << this->Overlap << endl;
   os << indent << "bb: " << this->BB << endl;
