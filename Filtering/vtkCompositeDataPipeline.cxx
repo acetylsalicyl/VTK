@@ -1501,7 +1501,8 @@ void vtkCompositeDataPipeline::MarkOutputsGenerated(
           indices[index] = static_cast<int>(iter->GetCurrentFlatIndex());
           }
         iter->Delete();
-        outInfo->Set(COMPOSITE_INDICES(), indices, count);
+        outInfo->Set(COMPOSITE_INDICES(), indices,
+          static_cast<int>(count));
         delete []indices;
         }
       else
