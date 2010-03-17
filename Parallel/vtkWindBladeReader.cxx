@@ -28,6 +28,14 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkUnstructuredGrid.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
 
+#include "vtkStringArray.h"
+#include "vtkFloatArray.h"
+#include "vtkIntArray.h"
+#include "vtkPoints.h"
+#include "vtkStructuredGrid.h"
+#include "vtkUnstructuredGrid.h"
+#include "vtkMultiBlockDataSetAlgorithm.h"
+
 #include <vtkstd/string>
 #include <vtksys/ios/sstream>
 #include <vtksys/ios/iostream>
