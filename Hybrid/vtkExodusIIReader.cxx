@@ -468,7 +468,7 @@ void vtkExodusIIReaderPrivate::GlomArrayNames( int objtyp,
       {
       if ( (*glommer)->Length() > longestGlom )
         {
-        longestGlom = (*glommer)->Length();
+        longestGlom = static_cast<unsigned int>( (*glommer)->Length() );
         longestGlommer = glommer;
         }
       }
