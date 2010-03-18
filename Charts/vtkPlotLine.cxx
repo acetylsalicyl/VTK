@@ -159,7 +159,7 @@ bool vtkPlotLine::Paint(vtkContext2D *painter)
       {
       width = 8.0;
       }
-    this->GeneraterMarker(width);
+    this->GeneraterMarker(static_cast<int>(width));
     painter->ApplyBrush(this->Brush);
     painter->GetPen()->SetWidth(width);
     painter->AddPointSprite(this->Marker);
