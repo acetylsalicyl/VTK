@@ -48,6 +48,10 @@ vtkChart::~vtkChart()
 {
   this->SetTitle(NULL);
   this->TitleProperties->Delete();
+  if (this->AnnotationLink)
+    {
+    this->AnnotationLink->Delete();
+    }
 }
 
 //-----------------------------------------------------------------------------
