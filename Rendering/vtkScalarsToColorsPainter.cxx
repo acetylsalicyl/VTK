@@ -572,7 +572,7 @@ void vtkScalarsToColorsPainter::MapScalars(vtkDataSet* output,
   // The LastUsedAlpha checks ensures that opacity changes are reflected
   // correctly when this->MapScalars(..) is called when iterating over a
   // composite dataset.
-  if (colors && lut->GetAlpha() == alpha &&
+  if (colors && 
     this->LastUsedAlpha == alpha &&
     this->LastUsedMultiplyWithAlpha == multiply_with_alpha)
     {
