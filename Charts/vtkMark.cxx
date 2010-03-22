@@ -386,7 +386,7 @@ void vtkMark::SetUserVariable(vtkstd::string name,
     }
   else
     {
-    vtksys_stl::pair<vtkstd::string,vtkValue<double> > p;
+    vtkstd::pair<vtkstd::string,vtkValue<double> > p;
     p.first=name;
     p.second=value;
     this->UserVariables->Map.insert(p);
