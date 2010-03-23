@@ -67,6 +67,23 @@ bool vtkChart::RemovePlot(vtkIdType)
 }
 
 //-----------------------------------------------------------------------------
+bool vtkChart::RemovePlotInstance(vtkPlot* plot)
+{
+  if (plot)
+    {
+    vtkIdType numberOfPlots = this->GetNumberOfPlots();
+    for (vtkIdType i = 0; i < numberOfPlots; ++i)
+      {
+      if (this->GetPlot(i) == plot)
+        {
+        return this->RemovePlot(i);
+        }
+      }
+    }
+  return false;
+}
+
+//-----------------------------------------------------------------------------
 void vtkChart::ClearPlots()
 {
 }
