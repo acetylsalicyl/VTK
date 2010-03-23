@@ -229,8 +229,9 @@ void vtkSeedRepresentation::RemoveActiveHandle()
     {
     vtkHandleListIterator iter = this->Handles->begin();
     vtkstd::advance( iter, this->ActiveHandle );
+    vtkHandleRepresentation *hr = *iter;
     this->Handles->erase( iter );
-    ( *iter )->Delete();
+    hr->Delete();
     this->ActiveHandle = -1;
     }
 }
