@@ -134,10 +134,10 @@ int vtkNetCDFPOPReader::RequestInformation(
     vtkInformationVector* outputVector)
 { 
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
-  int errorcode = nc_open(this->Filename, NC_NOWRITE, &this->ncFD);//read file
-  if (errorcode != NC_NOERR)//checks if read file error
+  int retval = nc_open(this->Filename, NC_NOWRITE, &this->ncFD);//read file
+  if (retval != NC_NOERR)//checks if read file error
   {
-    vtkErrorMacro(<< "can't read file " << nc_strerror(errorcode));
+    vtkErrorMacro(<< "can't read file " << nc_strerror(retval));
   }
   nc_inq_nvars(this->ncFD, &this->nvarsp); // get number of variables from file 
   // int dimId; not used?
