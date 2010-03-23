@@ -80,7 +80,6 @@ vtkNetCDFPOPReader::~vtkNetCDFPOPReader()
     delete[] this->Filename;
   }
   nc_close(this->ncFD);
-  this->VariableArraySelection->Delete();
   this->SelectionObserver->Delete();
 }
 
