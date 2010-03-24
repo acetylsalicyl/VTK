@@ -21,19 +21,13 @@
 #include "vtkFFMPEGConfig.h"
 
 extern "C" {
-//#ifdef VTK_FFMPEG_HAS_OLD_HEADER
-//# include <ffmpeg/avformat.h>
-//#else
-//# include <libavformat/avformat.h>
-//#endif
 
 #include <avformat.h>
 
-//#ifndef VTK_FFMPEG_HAS_IMG_CONVERT
-//# include <libswscale/swscale.h>
-//#endif
+#ifndef VTK_FFMPEG_HAS_IMG_CONVERT
+# include <swscale.h>
+#endif
 
-#include <swscale.h>
 }
 
 //---------------------------------------------------------------------------
