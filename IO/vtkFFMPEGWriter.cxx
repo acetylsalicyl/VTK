@@ -29,9 +29,11 @@ extern "C" {
 
 #include <avformat.h>
 
-#ifndef VTK_FFMPEG_HAS_IMG_CONVERT
-# include <libswscale/swscale.h>
-#endif
+//#ifndef VTK_FFMPEG_HAS_IMG_CONVERT
+//# include <libswscale/swscale.h>
+//#endif
+
+#include <swscale.h>
 }
 
 //---------------------------------------------------------------------------
