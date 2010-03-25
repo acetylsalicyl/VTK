@@ -433,15 +433,15 @@ vtkStringArray * vtkSQLiteDatabase::GetRecord(const char *table)
 // ----------------------------------------------------------------------
 vtkStdString vtkSQLiteDatabase::GetURL()
 {
-  vtkStdString url;
   const char* fname = this->GetDatabaseFileName();
-  url = this->GetDatabaseType();
-  url += "://";
+  this->TempURL = this->GetDatabaseType();
+  this->TempURL += "://";
   if ( fname )
     {
-    url += fname;
+    this->TempURL += fname;
     }
-  return url;
+  this->TempURL =
+  return this->TempURL;
 }
 
 // ----------------------------------------------------------------------
