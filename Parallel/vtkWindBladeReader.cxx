@@ -45,9 +45,9 @@ PURPOSE.  See the above copyright notice for more information.
 using namespace vtkstd;
 
 #ifdef WIN32
-const static char * Slash = "\\";
+static const char * Slash = "\\";
 #else
-const static char * Slash = "/";
+static const char * Slash = "/";
 #endif
 
 vtkCxxRevisionMacro(vtkWindBladeReader, "$Revision$");
