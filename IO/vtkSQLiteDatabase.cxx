@@ -440,7 +440,6 @@ vtkStdString vtkSQLiteDatabase::GetURL()
     {
     this->TempURL += fname;
     }
-  this->TempURL =
   return this->TempURL;
 }
 
