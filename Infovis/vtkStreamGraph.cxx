@@ -111,11 +111,7 @@ int vtkStreamGraph::RequestData(
   progress = 0.9;
   this->InvokeEvent(vtkCommand::ProgressEvent, &progress);
 
-  if (!output->CheckedShallowCopy(this->CurrentGraph->GetGraph()))
-    {
-    vtkErrorMacro("Output graph format invalid.");
-    return 0;
-    }
+  output->DeepCopy(this->CurrentGraph->GetGraph());
 
   return 1;
 }

@@ -1595,7 +1595,7 @@ void vtkGraph::RemoveEdgeInternal(vtkIdType e, bool directed)
     {
     this->Internals->ReplaceEdgeFromInList(le, e, this->Internals->Adjacency[lv].InEdges);
     }
-  else if (u != v)
+  else if (lu != lv)
     {
     this->Internals->ReplaceEdgeFromOutList(le, e, this->Internals->Adjacency[lv].OutEdges);
     }
