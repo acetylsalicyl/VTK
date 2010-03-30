@@ -81,7 +81,7 @@ void vtkQtRecordView::SetFieldType(int type)
 
 void vtkQtRecordView::AddRepresentationInternal(vtkDataRepresentation* rep)
 {    
-  vtkAlgorithmOutput *selConn, *annConn, *conn;
+  vtkAlgorithmOutput *conn;
   conn = rep->GetInputConnection();
 
   this->DataObjectToTable->SetInputConnection(0, conn);
@@ -89,7 +89,7 @@ void vtkQtRecordView::AddRepresentationInternal(vtkDataRepresentation* rep)
 
 void vtkQtRecordView::RemoveRepresentationInternal(vtkDataRepresentation* rep)
 {   
-  vtkAlgorithmOutput *selConn, *annConn, *conn;
+  vtkAlgorithmOutput *conn;
   conn = rep->GetInputConnection();
   this->DataObjectToTable->RemoveInputConnection(0, conn);
 }
