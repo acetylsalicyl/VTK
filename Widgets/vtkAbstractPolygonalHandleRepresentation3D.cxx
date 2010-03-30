@@ -571,6 +571,11 @@ void vtkAbstractPolygonalHandleRepresentation3D::UpdateLabel()
       {
       this->LabelTextActor->SetCamera( this->Renderer->GetActiveCamera() );
       }
+    else
+      {
+      vtkErrorMacro("UpdateLabel: no renderer has been set!");
+      return;
+      }
 
     // Place the label on the North east of the handle. We need to take into
     // account the viewup vector and the direction of the camera, so that we 
