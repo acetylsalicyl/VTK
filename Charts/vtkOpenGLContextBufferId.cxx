@@ -90,8 +90,8 @@ bool vtkOpenGLContextBufferId::IsAllocated() const
 {
 
   return this->Texture!=0 &&
-    this->Texture->GetWidth()==this->Width &&
-    this->Texture->GetHeight()==this->Height;
+    this->Texture->GetWidth()==static_cast<unsigned int>(this->Width) &&
+    this->Texture->GetHeight()==static_cast<unsigned int>(this->Height);
 }
 
 // ----------------------------------------------------------------------------
