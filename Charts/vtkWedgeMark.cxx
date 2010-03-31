@@ -75,7 +75,7 @@ void vtkWedgeMark::PaintIds()
 // ----------------------------------------------------------------------------
 void vtkWedgeMark::UpdateBufferId()
 {
-  vtkContextBufferId *bi=this->Scene->GetBufferId();
+  vtkAbstractContextBufferId *bi=this->Scene->GetBufferId();
   
   int width=bi->GetWidth();
   int height=bi->GetHeight();
