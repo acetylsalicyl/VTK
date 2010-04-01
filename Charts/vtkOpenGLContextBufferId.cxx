@@ -30,6 +30,7 @@ vtkStandardNewMacro(vtkOpenGLContextBufferId);
 vtkOpenGLContextBufferId::vtkOpenGLContextBufferId()
 {
   this->Texture=0;
+  this->Context=0;
 }
 
 // ----------------------------------------------------------------------------
