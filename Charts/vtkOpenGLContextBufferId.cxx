@@ -82,7 +82,8 @@ void vtkOpenGLContextBufferId::Allocate()
     }
   this->Context->MakeCurrent();
   // 3: RGB
-  this->Texture->Allocate2D(this->GetWidth(),this->GetHeight(),3,
+  this->Texture->Allocate2D(static_cast<unsigned int>(this->GetWidth()),
+                            static_cast<unsigned int>(this->GetHeight()),3,
                             VTK_UNSIGNED_CHAR);
 }
 
