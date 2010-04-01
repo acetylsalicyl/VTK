@@ -16,6 +16,7 @@
 #include "vtkMPIEventLog.h"
 #include "vtkMPIController.h"
 #include "vtkObjectFactory.h"
+#include "mpi.h" // required before "mpe.h" to avoid "C vs C++" conflicts
 #include "mpe.h"
 
 int vtkMPIEventLog::LastEventId = 0;
