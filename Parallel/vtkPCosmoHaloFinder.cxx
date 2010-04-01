@@ -580,4 +580,3 @@ int vtkPCosmoHaloFinder::RequestData(
 
   return 1;
 }
-
