@@ -120,7 +120,6 @@ vtkPCosmoReader::~vtkPCosmoReader()
   this->SetController(0);
 }
 
-
 //----------------------------------------------------------------------------
 void vtkPCosmoReader::PrintSelf(ostream& os, vtkIndent indent)
 {
