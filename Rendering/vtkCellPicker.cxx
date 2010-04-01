@@ -536,6 +536,10 @@ double vtkCellPicker::IntersectActorWithLine(const double p1[3],
     // Get the cell weights
     vtkIdType numPoints = cell->GetNumberOfPoints();
     double *weights = new double[numPoints];
+    for (vtkIdType i = 0; i < numPoints; ++i)
+      {
+      weights[i] = 1.0;
+      }
     double maxWeight = VTK_DOUBLE_MIN;
     vtkIdType iMaxWeight = 0;
     cell->InterpolateFunctions(minPCoords, weights);
