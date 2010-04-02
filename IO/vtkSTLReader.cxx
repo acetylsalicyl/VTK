@@ -221,6 +221,7 @@ int vtkSTLReader::RequestData(
 
   if (mergedScalars) 
     {
+    mergedScalars->SetName("STLSolidLabeling");
     output->GetCellData()->SetScalars(mergedScalars);
     mergedScalars->Delete();
     }
