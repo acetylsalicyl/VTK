@@ -133,7 +133,7 @@ void vtkPCosmoReader::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "Controller: (null)\n";
     }
 
-  os << indent << "FileName: " << this->FileName << endl;
+  os << indent << "FileName: " << (this->FileName != NULL ? this->FileName : "") << endl;
   os << indent << "rL: " << this->RL << endl;
   os << indent << "Overlap: " << this->Overlap << endl;
   os << indent << "ReadMode: " << this->ReadMode << endl;
