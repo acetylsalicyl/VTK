@@ -448,7 +448,7 @@ int vtkArrayCalculator::RequestData(
     {
     resultArray->Allocate(numTuples * 3);
     resultArray->SetNumberOfComponents(3);
-    resultArray->SetNumberOfTuples(numTuples);
+    resultArray->SetNumberOfTuples(numTuples);    
     resultArray->SetTuple(0, this->FunctionParser->GetVectorResult());
     }
   
