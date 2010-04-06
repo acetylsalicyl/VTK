@@ -1878,7 +1878,7 @@ void vtkDataSetAttributes::FieldList::GrowBy(unsigned int delta)
       }
     if ( this->FieldComponentsNames[i] )
       {
-      for ( int j=0; j < this->FieldComponentsNames[i]->size(); ++j )
+      for ( unsigned int j=0; j < this->FieldComponentsNames[i]->size(); ++j )
         {
         *newFieldComponentsNames[i]->at(j) = *this->FieldComponentsNames[i]->at(j);
         }
