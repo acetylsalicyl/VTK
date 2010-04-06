@@ -1804,18 +1804,18 @@ void vtkXMLWriter::WriteArrayHeader(vtkAbstractArray* a,  vtkIndent indent,
     {
     this->WriteScalarAttribute("NumberOfComponents",
       a->GetNumberOfComponents());    
-
-    vtkstd::ostringstream buff;
-    vtkstd::string compNameBase = "ComponentName";
-    const char* compName;
+    
+    vtksys_ios::ostringstream buff;    
+    const char* compName = NULL;
     for ( int i=0; i < a->GetNumberOfComponents(); ++i )
       {
       //get the component names    
-      buff << compNameBase << i;      
+      buff << "ComponentName" << i;      
       compName = a->GetComponentName( i );
       if ( compName )
         {
         this->WriteStringAttribute( buff.str().c_str(), compName );
+        compName = NULL;
         }
       buff.str("");
       buff.clear();

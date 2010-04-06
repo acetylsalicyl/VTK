@@ -691,33 +691,31 @@ vtkAbstractArray* vtkXMLReader::CreateArray(vtkXMLDataElement* da)
   vtkAbstractArray* array = vtkAbstractArray::CreateArray(dataType);
 
   array->SetName(da->GetAttribute("Name"));
-
-  //this needs to be zero since GetScalarAttribute will not fill it 
-  //with a value if da does not have a NumberOfComponents
+  
   int components = 0;
   if(da->GetScalarAttribute("NumberOfComponents", components))
     {
     array->SetNumberOfComponents(components);
-    }
 
-  //determine what component names have been saved in the file.  
-  const char* compName = NULL;
-  vtksys_ios::ostringstream buff;  
-  for ( int i=0; i < components && i < 10; ++i )
-    {
-    //get the component names                    
-    buff << "ComponentName" << i;        
-    compName = da->GetAttribute( buff.str().c_str() );
-    if ( compName )
-      {      
-      //detected a component name, add it
-      array->SetComponentName( i ,compName );
-      compName=NULL;
-      }    
-    buff.str("");
-    buff.clear();
+    //determine what component names have been saved in the file.  
+    const char* compName = NULL;
+    vtksys_ios::ostringstream buff;  
+    for ( int i=0; i < components && i < 10; ++i )
+      {
+      //get the component names                    
+      buff << "ComponentName" << i;        
+      compName = da->GetAttribute( buff.str().c_str() );
+      if ( compName )
+        {      
+        //detected a component name, add it
+        array->SetComponentName( i ,compName );
+        compName=NULL;
+        }    
+      buff.str("");
+      buff.clear();
+      }
     }
-   
+    
   // Scan/load for vtkInformationKey data.  
   int nElements=da->GetNumberOfNestedElements();
   for (int i=0; i<nElements; ++i)
