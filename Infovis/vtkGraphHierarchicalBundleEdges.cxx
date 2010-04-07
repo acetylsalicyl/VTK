@@ -161,7 +161,7 @@ int vtkGraphHierarchicalBundleEdges::RequestData(
             }
           else
             {
-            graphDomain == graphIdArray->GetName();
+            graphDomain = graphIdArray->GetName();
             }
           if(graphDomain != treeDomain)
             {
