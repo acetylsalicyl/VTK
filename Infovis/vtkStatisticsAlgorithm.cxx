@@ -228,6 +228,7 @@ int vtkStatisticsAlgorithm::FillInputPortInformation( int port, vtkInformation* 
 {
   if ( port == INPUT_DATA )
     {
+    info->Set( vtkAlgorithm::INPUT_IS_OPTIONAL(), 1 );
     info->Set( vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkTable" );
     return 1;
     }
