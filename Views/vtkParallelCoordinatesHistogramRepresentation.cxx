@@ -549,6 +549,11 @@ void vtkParallelCoordinatesHistogramRepresentation::SetNumberOfHistogramBins(int
     }
 }
 //------------------------------------------------------------------------------
+void vtkParallelCoordinatesHistogramRepresentation::SetNumberOfHistogramBins(int* n)
+{
+  this->SetNumberOfHistogramBins(n[0],n[1]);
+}
+//------------------------------------------------------------------------------
 vtkImageData* vtkParallelCoordinatesHistogramRepresentation::GetHistogramImage(int idx)
 {
   return this->HistogramFilter->GetOutputHistogramImage(idx);
