@@ -105,7 +105,7 @@ int vtkContingencyStatistics::FillOutputPortInformation( int port, vtkInformatio
     {
     info->Set( vtkDataObject::DATA_TYPE_NAME(), "vtkMultiBlockDataSet" );
     }
-  else if ( port == OUTPUT_TEST )
+  else
     {
     info->Set( vtkDataObject::DATA_TYPE_NAME(), "vtkTable" );
     }
