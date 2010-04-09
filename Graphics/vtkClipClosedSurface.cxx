@@ -1197,6 +1197,12 @@ void vtkClipClosedSurface::MakeCutPolys(
   // Go through all polys and triangulate them
   for (size_t polyId = 0; polyId < numNewPolys; polyId++)
     {
+    // If group is empty, then poly was a hole without a containing poly
+    if (polyGroups[polyId].size() == 0)
+      {
+      continue;
+      }
+
     vtkCCSPoly &poly = newPolys[polyId];
     size_t n = poly.size();
 
