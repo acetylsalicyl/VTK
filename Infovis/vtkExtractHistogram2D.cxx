@@ -243,6 +243,12 @@ vtkImageData* vtkExtractHistogram2D::GetOutputHistogramImage()
 int vtkExtractHistogram2D::GetInputArrays(vtkDataArray*& col1, vtkDataArray*& col2)
 {
   vtkTable* inData = vtkTable::SafeDownCast(this->GetInputDataObject(0,0));
+
+  if (!inData)
+    {
+    vtkErrorMacro(<<"Error: Empty input.");
+    return 0;
+    }
   
   if (this->Internals->Requests.size() > 0)
     {
