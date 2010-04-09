@@ -106,7 +106,8 @@ void vtkAxis::Update()
 
   // Calculate where the first tick mark should be drawn
   double tick = ceil(this->Minimum / this->TickInterval) * this->TickInterval;
-  int n = (this->Maximum - this->Minimum) / this->TickInterval;
+  int n = static_cast<int>(
+    (this->Maximum - this->Minimum) / this->TickInterval);
 
   // If there will be more than 500 tick marks it is likely a rounding issue
   // with a small range.
