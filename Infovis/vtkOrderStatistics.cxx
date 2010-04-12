@@ -39,8 +39,6 @@ PURPOSE.  See the above copyright notice for more information.
 #include <vtksys/stl/set>
 #include <vtksys/ios/sstream> 
 
-#define VTK_STATISTICS_NUMBER_OF_VARIABLES 1
-
 vtkCxxRevisionMacro(vtkOrderStatistics, "$Revision$");
 vtkStandardNewMacro(vtkOrderStatistics);
 

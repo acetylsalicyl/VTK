@@ -43,8 +43,6 @@
 #include <vtksys/ios/sstream> 
 #include <vtkstd/limits>
 
-#define VTK_STATISTICS_NUMBER_OF_VARIABLES 1
-
 vtkCxxRevisionMacro(vtkDescriptiveStatistics, "$Revision$");
 vtkStandardNewMacro(vtkDescriptiveStatistics);
 
