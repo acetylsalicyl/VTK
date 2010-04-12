@@ -76,6 +76,42 @@ void vtkStatisticsAlgorithm::PrintSelf( ostream &os, vtkIndent indent )
   os << indent << "Internals: " << this->Internals << endl;
 }
 
+// ----------------------------------------------------------------------
+int vtkStatisticsAlgorithm::FillInputPortInformation( int port, vtkInformation* info )
+{
+  if ( port == INPUT_DATA )
+    {
+    info->Set( vtkAlgorithm::INPUT_IS_OPTIONAL(), 1 );
+    info->Set( vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkTable" );
+    return 1;
+    }
+  else if ( port == LEARN_PARAMETERS )
+    {
+    info->Set( vtkAlgorithm::INPUT_IS_OPTIONAL(), 1 );
+    info->Set( vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkTable" );
+    return 1;
+    }
+  else if ( port == INPUT_MODEL )
+    {
+    info->Set( vtkAlgorithm::INPUT_IS_OPTIONAL(), 1 );
+    info->Set( vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkTable" );
+    return 1;
+    }
+  return 0;
+}
+
+// ----------------------------------------------------------------------
+int vtkStatisticsAlgorithm::FillOutputPortInformation( int port, vtkInformation* info )
+{
+  if ( port >= 0 )
+    {
+    info->Set( vtkDataObject::DATA_TYPE_NAME(), "vtkTable" );
+    return 1;
+    }
+
+  return 0;
+}
+
 //---------------------------------------------------------------------------
 void vtkStatisticsAlgorithm::SetColumnStatus( const char* namCol, int status )
 {
@@ -222,39 +258,4 @@ int vtkStatisticsAlgorithm::RequestData( vtkInformation*,
   return 1;
 }
 
-// ----------------------------------------------------------------------
-int vtkStatisticsAlgorithm::FillInputPortInformation( int port, vtkInformation* info )
-{
-  if ( port == INPUT_DATA )
-    {
-    info->Set( vtkAlgorithm::INPUT_IS_OPTIONAL(), 1 );
-    info->Set( vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkTable" );
-    return 1;
-    }
-  else if ( port == LEARN_PARAMETERS )
-    {
-    info->Set( vtkAlgorithm::INPUT_IS_OPTIONAL(), 1 );
-    info->Set( vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkTable" );
-    return 1;
-    }
-  else if ( port == INPUT_MODEL )
-    {
-    info->Set( vtkAlgorithm::INPUT_IS_OPTIONAL(), 1 );
-    info->Set( vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkTable" );
-    return 1;
-    }
-  return 0;
-}
-
-// ----------------------------------------------------------------------
-int vtkStatisticsAlgorithm::FillOutputPortInformation( int port, vtkInformation* info )
-{
-  if ( port >= 0 )
-    {
-    info->Set( vtkDataObject::DATA_TYPE_NAME(), "vtkTable" );
-    return 1;
-    }
-
-  return 0;
-}
 

@@ -44,6 +44,34 @@ void vtkMultiCorrelativeStatistics::PrintSelf( ostream& os, vtkIndent indent )
 }
 
 // ----------------------------------------------------------------------
+int vtkMultiCorrelativeStatistics::FillInputPortInformation( int port, vtkInformation* info )
+{
+  int stat; // = this->Superclass::FillInputPortInformation( port, info );
+  if ( port == INPUT_MODEL )
+    {
+    info->Set( vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkMultiBlockDataSet" );
+    info->Set( vtkAlgorithm::INPUT_IS_OPTIONAL(), 1 );
+    stat = 1;
+    }
+  else
+    {
+    stat = this->Superclass::FillInputPortInformation( port, info );
+    }
+  return stat;
+}
+
+// ----------------------------------------------------------------------
+int vtkMultiCorrelativeStatistics::FillOutputPortInformation( int port, vtkInformation* info )
+{
+  int stat = this->Superclass::FillOutputPortInformation( port, info );
+  if ( port == OUTPUT_MODEL )
+    {
+    info->Set( vtkDataObject::DATA_TYPE_NAME(), "vtkMultiBlockDataSet" );
+    }
+  return stat;
+}
+
+// ----------------------------------------------------------------------
 void vtkMultiCorrelativeInvertCholesky( vtksys_stl::vector<double*>& chol, vtksys_stl::vector<double>& inv )
 {
   vtkIdType m = static_cast<vtkIdType>( chol.size() );
@@ -132,34 +160,6 @@ void vtkMultiCorrelativeAssessFunctor::operator () ( vtkVariantArray* result, vt
   // To report cumulance values instead of relative deviation, use this:
   // result->SetValue( 0, exp( -0.5 * r ) * pow( 0.5 * r, 0.5 * m - 2.0 ) * ( 0.5 * ( r + m ) - 1.0 ) / this->Normalization );
   result->SetValue( 0, r );
-}
-
-// ----------------------------------------------------------------------
-int vtkMultiCorrelativeStatistics::FillInputPortInformation( int port, vtkInformation* info )
-{
-  int stat; // = this->Superclass::FillInputPortInformation( port, info );
-  if ( port == INPUT_MODEL )
-    {
-    info->Set( vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkMultiBlockDataSet" );
-    info->Set( vtkAlgorithm::INPUT_IS_OPTIONAL(), 1 );
-    stat = 1;
-    }
-  else
-    {
-    stat = this->Superclass::FillInputPortInformation( port, info );
-    }
-  return stat;
-}
-
-// ----------------------------------------------------------------------
-int vtkMultiCorrelativeStatistics::FillOutputPortInformation( int port, vtkInformation* info )
-{
-  int stat = this->Superclass::FillOutputPortInformation( port, info );
-  if ( port == OUTPUT_MODEL )
-    {
-    info->Set( vtkDataObject::DATA_TYPE_NAME(), "vtkMultiBlockDataSet" );
-    }
-  return stat;
 }
 
 // ----------------------------------------------------------------------
