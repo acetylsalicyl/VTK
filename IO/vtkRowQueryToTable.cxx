@@ -106,6 +106,10 @@ int vtkRowQueryToTable::RequestData(
       {
       arr = vtkTypeUInt64Array::New();
       }
+    else if (type == 0)
+      {
+      arr = vtkAbstractArray::CreateArray(VTK_DOUBLE);
+      }
     else
       {
       arr = vtkAbstractArray::CreateArray(type);
