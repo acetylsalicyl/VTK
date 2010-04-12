@@ -170,6 +170,11 @@ void vtkOrderStatistics::Learn( vtkTable* inData,
   primaryTab->AddColumn( idTypeCol );
   idTypeCol->Delete();
 
+  if ( ! inData )
+    {
+    return;
+    }
+
   vtkIdType n = inData->GetNumberOfRows();
   if ( n <= 0 )
     {

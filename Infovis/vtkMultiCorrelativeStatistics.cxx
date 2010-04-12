@@ -314,6 +314,11 @@ void vtkMultiCorrelativeStatistics::Learn( vtkTable* inData,
   sparseCov->AddColumn( mucov );
   mucov->Delete();
 
+  if ( ! inData )
+    {
+    return;
+    }
+
   vtkIdType n = inData->GetNumberOfRows();
   if ( n <= 0 )
     {

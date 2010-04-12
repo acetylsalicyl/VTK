@@ -231,6 +231,11 @@ void vtkCorrelativeStatistics::Learn( vtkTable* inData,
   outMeta->AddColumn( doubleCol );
   doubleCol->Delete();
 
+  if ( ! inData )
+    {
+    return;
+    }
+
   vtkIdType nRow = inData->GetNumberOfRows();
   if ( ! nRow )
     {

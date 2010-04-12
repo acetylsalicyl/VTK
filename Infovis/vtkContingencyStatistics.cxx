@@ -160,6 +160,11 @@ void vtkContingencyStatistics::Learn( vtkTable* inData,
   contingencyTab->AddColumn( idTypeCol );
   idTypeCol->Delete();
 
+  if ( ! inData )
+    {
+    return;
+    }
+
   vtkIdType n = inData->GetNumberOfRows();
   if ( n <= 0 )
     {

@@ -323,6 +323,11 @@ void vtkDescriptiveStatistics::Learn( vtkTable* inData,
   primaryTab->AddColumn( doubleCol );
   doubleCol->Delete();
 
+  if ( ! inData )
+    {
+    return;
+    }
+
   vtkIdType nRow = inData->GetNumberOfRows();
   if ( ! nRow )
     {
