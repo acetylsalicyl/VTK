@@ -219,7 +219,7 @@ void vtkImageAccumulateExecute(vtkImageAccumulate *self,
               {
               // Gather statistics
               sum[idxC] += *subPtr;
-              sumSqr[idxC] += (*subPtr * *subPtr);
+              sumSqr[idxC] += (static_cast<double>(*subPtr) * (*subPtr));
               if (*subPtr > max[idxC])
                 {
                 max[idxC] = *subPtr;
