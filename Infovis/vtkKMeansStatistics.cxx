@@ -303,17 +303,18 @@ void vtkKMeansStatistics::Learn( vtkTable* inData,
     {
     return;
     }
+
+  if ( ! inData )
+    {
+    return;
+    }
+
   vtkIdType numObservations = inData->GetNumberOfRows();
   if ( numObservations <= 0 )
     {
     return;
     }
   vtkIdType totalNumberOfObservations = this->GetTotalNumberOfObservations( numObservations );
-
-  if ( ! inData )
-    {
-    return;
-    }
 
   if ( inData->GetNumberOfColumns() <= 0 )
     {
